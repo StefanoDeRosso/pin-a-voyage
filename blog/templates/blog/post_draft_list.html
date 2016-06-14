@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% load django_markdown %}
+
+{% block title %}Pin a Voyage | {{ user.first_name }}'s draft list{% endblock %}
+
+{% block content %}
+	<div id="draft-header">
+		<h1>Your drafts</h1>
+	</div>
+	{% for post in posts %}
+		{% if user == post.author %}
+		<div class="post-wrapper" id="draft">
+			<div class="post">
+				<p class="date-drafts">created: {{ post.created_date|date:'d-m-Y' }}</p>
+				<h1><a href="{% url 'blog.views.post_detail' slug=post.slug %}">{{ post.title }}</a></h1>
+				<p>{{ post.text|markdown|linebreaks|truncatechars:200 }}</p>
+			</div>
+		</div>
+		{% else %}
+		<p>&nbsp;</p>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

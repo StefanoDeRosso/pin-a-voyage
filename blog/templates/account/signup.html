@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block title %}Pin a Voyage | Sign up with Pin a Voyage{% endblock %}
+
+{% block content %}
+<div class="container-fluid registered">
+	
+<h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button id="submit_button" type="submit">{% trans "Sign Up" %} &raquo;</button>
+</form>
+
+<script>
+	document.getElementById("id_first_name").className = "form-control";
+	document.getElementById("id_first_name").placeholder = "First name";
+	document.getElementById("id_second_name").className = "form-control";
+	document.getElementById("id_second_name").placeholder = "Last name";
+	document.getElementById("id_email").className = "form-control";
+	document.getElementById("id_password1").className = "form-control";
+	document.getElementById("id_password1").placeholder = "Password";
+	document.getElementById("id_password2").className = "form-control";
+	document.getElementById("id_password2").placeholder = "Password (again)";
+	document.getElementById("id_email").className = "form-control";
+	document.getElementById("id_email").placeholder = "E-mail address";
+	document.getElementById("submit_button").className = "btn btn-info submit";
+</script>
+
+</div>
+{% endblock %}

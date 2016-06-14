@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block title %}Pin a Voyage | Verification e-mail sent{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+	<div id="password-message">
+		{% for message in messages %}
+		<h3{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+		{% endfor %}
+	</div>
+{% endif %}
+
+<div class="container-fluid registered">
+    <h1>{% trans "Verify Your E-mail Address" %}</h1>
+
+    <h2>
+		{% blocktrans %}
+			We have sent an e-mail to you for verification.<br>
+			Follow the link provided to finalize the signup process.<br> 
+			Please <a href="mailto:voyage.pin@gmail.com">contact us</a> if you do not receive it within a few minutes.<br>
+		{% endblocktrans %}
+	</h2>
+	<h3>Get back to the <a href="/">homepage</a>, and don't forget to activate your account!</h3>
+</div>
+{% endblock %}

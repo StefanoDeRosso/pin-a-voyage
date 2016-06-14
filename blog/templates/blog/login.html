@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %}
+
+{% block login %}
+
+<!-- Trigger the modal with a button -->
+	<a id="login_btn" class="btn_sub_log top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+<!-- Modal -->
+	<div class="modal fade" id="login_modal" role="dialog">
+		<div class="modal-dialog">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title" id="sign-up">Login with Pin a Voyage</h3>
+				</div>
+			<div class="modal-body">
+				<form data-parsley-validate method="post" id="login-form" action="/login/" enctype="multipart/form-data"
+				data-parsley-trigger="focusout">
+				
+					{% csrf_token %}
+					{% if next %}
+						<input type="hidden" name="next" value="{{ next }}" />
+					{% endif %}
+					
+					{{ login_form.as_p }}
+					
+					<p id="login-error"></p>
+
+					<input type="submit" class="btn btn-info submit" name="login" value="Login" />
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+{% endblock login %}

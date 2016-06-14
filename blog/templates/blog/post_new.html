@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% load django_markdown %}
+
+{% block title %}Pin a Voyage | New post{% endblock %}
+
+{% block content %}
+	<div class="post-wrapper">
+		<div class="post">
+			<h1>New post</h1>
+			<p><i>Author</i>: <strong>{{ user.first_name }} {{ user.second_name }}</strong></p>
+			<form method="POST" name="new_post" class="post-form">
+				{% csrf_token %}
+				
+				{% markdown_editor "#new_post" %}
+				{% markdown_media %}
+				
+				{{ form.as_p }}
+				<div id="new-post-buttons">
+					<button type="submit" name="_save" class="save btn btn-default">Save</button>
+					<button type="submit" name="_save_to_draft" class="save btn btn-default">Save to draft</button>
+				</div>
+				<div class="clear"></div>
+			</form>
+		</div>
+    </div>
+{% endblock %}

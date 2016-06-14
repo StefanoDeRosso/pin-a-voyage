@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Pin a Voyage | Add comment to the post{% endblock %}
+
+{% block content %}
+	<div class="post-wrapper comment">
+		<div class="comment">
+			<h1>New comment</h1>
+			<form method="POST" class="post-form" id="comment-form">
+				{% csrf_token %}
+				
+				{{ form.as_p }}
+				<button type="submit" class="save btn btn-default">Send</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

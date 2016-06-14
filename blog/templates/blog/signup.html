@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<form data-parsley-validate	id="user_form" method="post" action="/register/"
+enctype="multipart/form-data" data-parsley-trigger="focusout">
+
+	{% csrf_token %}
+	
+	{{ user_form.as_p }}
+
+	<input type="submit" class="btn btn-info submit" name="register" value="Register" />
+</form>
+{% endblock %}

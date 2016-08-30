@@ -5,6 +5,8 @@ __pycache__/
 blogproject/settings/local.py
 blogproject/settings/live.py
 
+pin-a-voyage-env/
+
 blog/migrations/last_functioning_migrations/
 custom_user/migrations/last_functioning_migrations/
 
